@@ -8,14 +8,16 @@ import "./index.css";
 import ErrorPage from "./errorPage";
 import Contact, {
   loader as contactLoader,
-} from "./routes/contacts";
+} from "./routes/contact";
 import Root, {
   loader as rootLoader, 
   action as rootAction,
 } from "./routes/root";
-import EditContact from "./routes/edit";
+import EditContact, {
+  action as editAction,
+} from "./routes/edit";
 import { action as destroyAction } from "./routes/destroy";
-
+import Index from "./routes";
 
 
 
@@ -27,6 +29,9 @@ const router = createBrowserRouter([
     loader: rootLoader,
     action: rootAction,
     children: [
+      { index: true, 
+        element: <Index /> 
+      },
       {
         path: "contacts/:contactId",
         element: <Contact />,
